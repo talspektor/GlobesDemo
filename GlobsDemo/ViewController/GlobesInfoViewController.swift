@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GlobesInfoViewController: UIViewController, ViewContorllerType {
+class GlobesInfoViewController: UIViewController {
     
     enum SegmentPresentingState: Int {
         case cars = 0
@@ -20,7 +20,7 @@ class GlobesInfoViewController: UIViewController, ViewContorllerType {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndecatorView: UIActivityIndicatorView!
     
-    var viewModel: GlobsInfoViewModel?
+    var viewModel: GlobesInfoViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ extension GlobesInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GlobsCell.reuseIdentifier, for: indexPath) as? GlobsCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GlobesCell.reuseIdentifier, for: indexPath) as? GlobesCell else {
             fatalError("can't dequeue cell")
         }
         let title = viewModel?.dataModel[indexPath.row].title ?? ""
@@ -82,7 +82,7 @@ extension GlobesInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? GlobsCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? GlobesCell else { return }
         viewModel?.lastSelection = cell.titleLabel.text
     }
 }

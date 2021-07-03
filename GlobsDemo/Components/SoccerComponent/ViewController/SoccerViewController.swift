@@ -7,22 +7,19 @@
 
 import UIKit
 
-class SoccerViewController: UIViewController, ViewContorllerType {
+class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol {
 
-    enum SegmentPresentingState: Int {
+    private enum SegmentPresentingState: Int {
         case spain = 0
         case englandAndFrance = 1
     }
-
-    static let identifier = String(describing: SoccerViewController.self)
-
+    var coordinator: SoccerCoordinator?
     var didSelectCell: ((String?) -> Void)?
+    var viewModel: SoccerViewModel?
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var activityIndecatorView: UIActivityIndicatorView!
-
-    var viewModel: SoccerViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +40,10 @@ class SoccerViewController: UIViewController, ViewContorllerType {
             self?.refreshData()
         }
         viewModel?.startAnimate = { [weak self] in
-            print("startAnimate")
             self?.startAnimate()
 
         }
         viewModel?.stopAnimate = { [weak self] in
-            print("stopAnimate")
             self?.stopAnimate()
         }
     }
@@ -102,13 +97,19 @@ extension SoccerViewController: UITableViewDataSource {
 
 extension SoccerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.lastSelection = viewModel?.dataModel[indexPath.row].strTeam
-        didSelectCell?(viewModel?.dataModel[indexPath.row].strTeam)
-        let storyboard = UIStoryboard(name: DetailViewController.identifier, bundle: nil)
-        let detailViewController = storyboard.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
-        let name = viewModel?.dataModel[indexPath.row].strTeam
-        let league = viewModel?.dataModel[indexPath.row].strLeague
-        detailViewController.setText(name: name, league: league)
-        navigationController?.pushViewController(detailViewController, animated: true)
+        handleLastSelection(index: indexPath.row)
+
+        showDetails(index: indexPath.row)
+    }
+
+    private func handleLastSelection(index: Int) {
+        viewModel?.lastSelection = viewModel?.dataModel[index].strTeam
+        didSelectCell?(viewModel?.dataModel[index].strTeam)
+    }
+
+    private func showDetails(index: Int) {
+        let name = viewModel?.dataModel[index].strTeam
+        let league = viewModel?.dataModel[index].strLeague
+        coordinator?.showDetails(name: name, league: league)
     }
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class GlobsCell: UITableViewCell {
+class GlobesCell: UITableViewCell {
     
-    static let reuseIdentifier = String(describing: GlobsCell.self)
+    static let reuseIdentifier = String(describing: GlobesCell.self)
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

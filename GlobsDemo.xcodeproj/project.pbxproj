@@ -23,8 +23,11 @@
 		43A55256268F473B00E02AC6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A55255268F473B00E02AC6 /* DetailViewController.swift */; };
 		43A55259268F475A00E02AC6 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A55258268F475A00E02AC6 /* DetailViewController.storyboard */; };
 		43A5525C2690532500E02AC6 /* GlobesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A5525B2690532500E02AC6 /* GlobesViewController.storyboard */; };
-		43A5525E2690547E00E02AC6 /* TabBarItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5525D2690547E00E02AC6 /* TabBarItemsFactory.swift */; };
+		43A5525E2690547E00E02AC6 /* TabBatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5525D2690547E00E02AC6 /* TabBatProtocol.swift */; };
 		43A5526526905FE100E02AC6 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A5526426905FE100E02AC6 /* TabBarController.storyboard */; };
+		43A55276269067E400E02AC6 /* SoccerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A55275269067E400E02AC6 /* SoccerCoordinator.swift */; };
+		43A5527826906B8900E02AC6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5527726906B8900E02AC6 /* Coordinator.swift */; };
+		43A5527D26906F1E00E02AC6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5527C26906F1E00E02AC6 /* MainCoordinator.swift */; };
 		F271881E26831AD9007E9425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271881D26831AD9007E9425 /* AppDelegate.swift */; };
 		F271882026831AD9007E9425 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271881F26831AD9007E9425 /* SceneDelegate.swift */; };
 		F271882226831AD9007E9425 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271882126831AD9007E9425 /* UserViewController.swift */; };
@@ -35,12 +38,12 @@
 		F271884F26831C9E007E9425 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271884E26831C9E007E9425 /* UserViewModel.swift */; };
 		F271885226831DF6007E9425 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271885126831DF6007E9425 /* TabBarController.swift */; };
 		F271885526831E83007E9425 /* GlobesInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271885426831E83007E9425 /* GlobesInfoViewController.swift */; };
-		F271885A268322EA007E9425 /* GlobsInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2718859268322EA007E9425 /* GlobsInfoViewModel.swift */; };
+		F271885A268322EA007E9425 /* GlobesInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2718859268322EA007E9425 /* GlobesInfoViewModel.swift */; };
 		F271885D2683250D007E9425 /* GlobsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271885C2683250D007E9425 /* GlobsModel.swift */; };
 		F2718867268327EC007E9425 /* GlobesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2718866268327EC007E9425 /* GlobesDataProvider.swift */; };
 		F27188692683280C007E9425 /* GlobesNetworkDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27188682683280C007E9425 /* GlobesNetworkDataProvider.swift */; };
 		F271886B2683288F007E9425 /* GlobesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271886A2683288F007E9425 /* GlobesEndPoint.swift */; };
-		F271886E2683342D007E9425 /* GlobsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271886D2683342D007E9425 /* GlobsCell.swift */; };
+		F271886E2683342D007E9425 /* GlobesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271886D2683342D007E9425 /* GlobesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +79,11 @@
 		43A55255268F473B00E02AC6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		43A55258268F475A00E02AC6 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		43A5525B2690532500E02AC6 /* GlobesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GlobesViewController.storyboard; sourceTree = "<group>"; };
-		43A5525D2690547E00E02AC6 /* TabBarItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsFactory.swift; sourceTree = "<group>"; };
+		43A5525D2690547E00E02AC6 /* TabBatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBatProtocol.swift; sourceTree = "<group>"; };
 		43A5526426905FE100E02AC6 /* TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
+		43A55275269067E400E02AC6 /* SoccerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerCoordinator.swift; sourceTree = "<group>"; };
+		43A5527726906B8900E02AC6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		43A5527C26906F1E00E02AC6 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		F271881A26831AD9007E9425 /* GlobsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271881D26831AD9007E9425 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F271881F26831AD9007E9425 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,12 +100,12 @@
 		F271884E26831C9E007E9425 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F271885126831DF6007E9425 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F271885426831E83007E9425 /* GlobesInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobesInfoViewController.swift; sourceTree = "<group>"; };
-		F2718859268322EA007E9425 /* GlobsInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobsInfoViewModel.swift; sourceTree = "<group>"; };
+		F2718859268322EA007E9425 /* GlobesInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobesInfoViewModel.swift; sourceTree = "<group>"; };
 		F271885C2683250D007E9425 /* GlobsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobsModel.swift; sourceTree = "<group>"; };
 		F2718866268327EC007E9425 /* GlobesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobesDataProvider.swift; sourceTree = "<group>"; };
 		F27188682683280C007E9425 /* GlobesNetworkDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobesNetworkDataProvider.swift; sourceTree = "<group>"; };
 		F271886A2683288F007E9425 /* GlobesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobesEndPoint.swift; sourceTree = "<group>"; };
-		F271886D2683342D007E9425 /* GlobsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobsCell.swift; sourceTree = "<group>"; };
+		F271886D2683342D007E9425 /* GlobesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +182,7 @@
 		43A55243268F17FF00E02AC6 /* SoccerComponent */ = {
 			isa = PBXGroup;
 			children = (
+				43A5527E2690773800E02AC6 /* Coordinator */,
 				43A5524E268F1E3700E02AC6 /* ViewModel */,
 				43A55248268F197300E02AC6 /* ViewController */,
 				43A55249268F197B00E02AC6 /* Cell */,
@@ -188,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				43A55241268F17FC00E02AC6 /* SoccerViewController.swift */,
-				43A55244268F183800E02AC6 /* SoccerViewController.storyboard */,
+				43A55271269065AC00E02AC6 /* Storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -223,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				F271885426831E83007E9425 /* GlobesInfoViewController.swift */,
-				43A5525B2690532500E02AC6 /* GlobesViewController.storyboard */,
+				43A5526E2690650800E02AC6 /* Storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -231,10 +238,128 @@
 		43A5526626905FEB00E02AC6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				43A5526D269064DA00E02AC6 /* Storybaord */,
 				F271885126831DF6007E9425 /* TabBarController.swift */,
-				43A5526426905FE100E02AC6 /* TabBarController.storyboard */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		43A55267269061CF00E02AC6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F271882626831AD9007E9425 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		43A552682690643700E02AC6 /* TabBarProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				43A5525D2690547E00E02AC6 /* TabBatProtocol.swift */,
+			);
+			path = TabBarProtocol;
+			sourceTree = "<group>";
+		};
+		43A552692690645200E02AC6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				43A5528126907B4600E02AC6 /* UserComponent */,
+				F271885026831DD2007E9425 /* TabBarComponent */,
+				F271885326831E53007E9425 /* GlobesInfoComponent */,
+				43A55243268F17FF00E02AC6 /* SoccerComponent */,
+				43A55257268F474000E02AC6 /* DetailComponent */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		43A5526B269064B100E02AC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F271882126831AD9007E9425 /* UserViewController.swift */,
+				43A5526C269064BD00E02AC6 /* Storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		43A5526C269064BD00E02AC6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				43A5524F268F202200E02AC6 /* UserViewController.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		43A5526D269064DA00E02AC6 /* Storybaord */ = {
+			isa = PBXGroup;
+			children = (
+				43A5526426905FE100E02AC6 /* TabBarController.storyboard */,
+			);
+			path = Storybaord;
+			sourceTree = "<group>";
+		};
+		43A5526E2690650800E02AC6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				43A5525B2690532500E02AC6 /* GlobesViewController.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		43A552702690655B00E02AC6 /* GlobesViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F2718859268322EA007E9425 /* GlobesInfoViewModel.swift */,
+			);
+			path = GlobesViewModel;
+			sourceTree = "<group>";
+		};
+		43A55271269065AC00E02AC6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				43A55244268F183800E02AC6 /* SoccerViewController.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		43A5527B26906F0E00E02AC6 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				43A5527726906B8900E02AC6 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		43A5527E2690773800E02AC6 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				43A55275269067E400E02AC6 /* SoccerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		43A5527F26907A1F00E02AC6 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				43A5527C26906F1E00E02AC6 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		43A5528026907B1100E02AC6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F271884E26831C9E007E9425 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		43A5528126907B4600E02AC6 /* UserComponent */ = {
+			isa = PBXGroup;
+			children = (
+				43A5528026907B1100E02AC6 /* ViewModel */,
+				43A5526B269064B100E02AC6 /* Controller */,
+			);
+			path = UserComponent;
 			sourceTree = "<group>";
 		};
 		F271881126831AD9007E9425 = {
@@ -260,16 +385,13 @@
 		F271881C26831AD9007E9425 /* GlobsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				43A5527B26906F0E00E02AC6 /* Coordinator */,
 				43A55240268F16D900E02AC6 /* SuppertingFiles */,
 				F2718865268327CF007E9425 /* DataProvider */,
 				F271885E26832543007E9425 /* Network */,
 				F271885B268324F8007E9425 /* Model */,
-				43A55257268F474000E02AC6 /* DetailComponent */,
-				43A55243268F17FF00E02AC6 /* SoccerComponent */,
-				F271885326831E53007E9425 /* GlobsInfoComponent */,
-				F271885026831DD2007E9425 /* TabBarComponent */,
-				F271884D26831C81007E9425 /* UserComponent */,
-				F271882626831AD9007E9425 /* Assets.xcassets */,
+				43A552692690645200E02AC6 /* Components */,
+				43A55267269061CF00E02AC6 /* Assets */,
 				F271882826831AD9007E9425 /* LaunchScreen.storyboard */,
 				F271882B26831AD9007E9425 /* Info.plist */,
 			);
@@ -294,33 +416,25 @@
 			path = GlobsDemoUITests;
 			sourceTree = "<group>";
 		};
-		F271884D26831C81007E9425 /* UserComponent */ = {
-			isa = PBXGroup;
-			children = (
-				F271882126831AD9007E9425 /* UserViewController.swift */,
-				F271884E26831C9E007E9425 /* UserViewModel.swift */,
-				43A5524F268F202200E02AC6 /* UserViewController.storyboard */,
-			);
-			name = UserComponent;
-			sourceTree = "<group>";
-		};
 		F271885026831DD2007E9425 /* TabBarComponent */ = {
 			isa = PBXGroup;
 			children = (
+				43A5527F26907A1F00E02AC6 /* Coordinator */,
+				43A552682690643700E02AC6 /* TabBarProtocol */,
 				43A5526626905FEB00E02AC6 /* ViewController */,
-				43A5525D2690547E00E02AC6 /* TabBarItemsFactory.swift */,
 			);
 			path = TabBarComponent;
 			sourceTree = "<group>";
 		};
-		F271885326831E53007E9425 /* GlobsInfoComponent */ = {
+		F271885326831E53007E9425 /* GlobesInfoComponent */ = {
 			isa = PBXGroup;
 			children = (
-				F271886C26833416007E9425 /* GlobsCell */,
+				43A552702690655B00E02AC6 /* GlobesViewModel */,
+				F271886C26833416007E9425 /* GlobesCell */,
 				43A5525A2690530900E02AC6 /* ViewController */,
-				F2718859268322EA007E9425 /* GlobsInfoViewModel.swift */,
 			);
-			name = GlobsInfoComponent;
+			name = GlobesInfoComponent;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F271885B268324F8007E9425 /* Model */ = {
@@ -349,12 +463,12 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
-		F271886C26833416007E9425 /* GlobsCell */ = {
+		F271886C26833416007E9425 /* GlobesCell */ = {
 			isa = PBXGroup;
 			children = (
-				F271886D2683342D007E9425 /* GlobsCell.swift */,
+				F271886D2683342D007E9425 /* GlobesCell.swift */,
 			);
-			path = GlobsCell;
+			path = GlobesCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,21 +618,24 @@
 				F271882226831AD9007E9425 /* UserViewController.swift in Sources */,
 				43A55232268F10DC00E02AC6 /* Team.swift in Sources */,
 				F271884F26831C9E007E9425 /* UserViewModel.swift in Sources */,
-				F271885A268322EA007E9425 /* GlobsInfoViewModel.swift in Sources */,
+				F271885A268322EA007E9425 /* GlobesInfoViewModel.swift in Sources */,
 				43A55254268F403000E02AC6 /* AtomicInteger.swift in Sources */,
 				43A5524D268F1E3400E02AC6 /* SoccerViewModel.swift in Sources */,
 				43A5523C268F14E200E02AC6 /* SoccerTeamsDataProvider.swift in Sources */,
 				43A55239268F126200E02AC6 /* TeamsEndPoint.swift in Sources */,
 				43A55256268F473B00E02AC6 /* DetailViewController.swift in Sources */,
 				F271885D2683250D007E9425 /* GlobsModel.swift in Sources */,
+				43A55276269067E400E02AC6 /* SoccerCoordinator.swift in Sources */,
 				F2718867268327EC007E9425 /* GlobesDataProvider.swift in Sources */,
 				43A5523F268F158400E02AC6 /* NetworkSoccesrTeamDataProvider.swift in Sources */,
 				F27188692683280C007E9425 /* GlobesNetworkDataProvider.swift in Sources */,
-				43A5525E2690547E00E02AC6 /* TabBarItemsFactory.swift in Sources */,
+				43A5525E2690547E00E02AC6 /* TabBatProtocol.swift in Sources */,
 				F271881E26831AD9007E9425 /* AppDelegate.swift in Sources */,
-				F271886E2683342D007E9425 /* GlobsCell.swift in Sources */,
+				F271886E2683342D007E9425 /* GlobesCell.swift in Sources */,
 				F271885226831DF6007E9425 /* TabBarController.swift in Sources */,
 				F271885526831E83007E9425 /* GlobesInfoViewController.swift in Sources */,
+				43A5527826906B8900E02AC6 /* Coordinator.swift in Sources */,
+				43A5527D26906F1E00E02AC6 /* MainCoordinator.swift in Sources */,
 				F271882026831AD9007E9425 /* SceneDelegate.swift in Sources */,
 				43A55247268F190400E02AC6 /* TeamCell.swift in Sources */,
 			);

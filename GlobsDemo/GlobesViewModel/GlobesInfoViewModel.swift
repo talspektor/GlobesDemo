@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GlobsInfoViewModel {
+class GlobesInfoViewModel {
     
     enum State {
         case fatching
@@ -128,6 +128,6 @@ class GlobsInfoViewModel {
     }
     
     deinit {
-        print(String(describing: GlobsInfoViewModel.self))
+        print(String(describing: GlobesInfoViewModel.self))
     }
 }

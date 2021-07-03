@@ -7,9 +7,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, ViewContorllerType {
-
-    static let identifier = String(describing: UserViewController.self)
+class UserViewController: UIViewController, Storyboarded, TabBatItemProtocol {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
