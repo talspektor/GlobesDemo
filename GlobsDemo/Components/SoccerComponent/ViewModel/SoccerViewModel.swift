@@ -66,6 +66,7 @@ class SoccerViewModel: BaseViewModel {
         _counter.set(newValue: counter + 1)
         dataProvider.fetchSpanishLeague { [weak self] result in
             guard let self = self else { return }
+            print("!!! Spanish ended")
             self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
                 self?.fetchSpanishLeague()

@@ -66,8 +66,8 @@ class GlobesInfoViewModel: BaseViewModel {
         dataProvider.fetchCars { [weak self] result in
             guard let self = self else { return }
             self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) {
-                self.fetchCars()
+            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                self?.fetchCars()
             }
             switch result {
             case .success(let carGlobsModels):
@@ -84,8 +84,8 @@ class GlobesInfoViewModel: BaseViewModel {
         dataProvider.fetchSport { [weak self] result in
             guard let self = self else { return }
             self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) {
-                self.fetchSport()
+            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                self?.fetchSport()
             }
             switch result {
             case .success(let sportGlobsModels):
@@ -101,8 +101,8 @@ class GlobesInfoViewModel: BaseViewModel {
         dataProvider.fetchCulture { [weak self] result in
             guard let self = self else { return }
             self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) {
-                self.fetchCulture()
+            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                self?.fetchCulture()
             }
             switch result {
             case .success(let cultureGlobsModel):

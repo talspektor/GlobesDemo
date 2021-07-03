@@ -11,5 +11,4 @@ struct Team: Decodable {
     let idTeam: String
     let strLeague: String
     let strTeam: String
-//    let strDescriptionEN: String
 }

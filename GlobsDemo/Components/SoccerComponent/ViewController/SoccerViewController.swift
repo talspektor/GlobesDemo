@@ -92,8 +92,6 @@ extension SoccerViewController: UITableViewDataSource {
         cell.configure(name: name, description: league)
         return cell
     }
-
-
 }
 
 extension SoccerViewController: UITableViewDelegate {
