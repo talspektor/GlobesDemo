@@ -7,14 +7,14 @@
 
 import UIKit
 
-class UserViewController: UIViewController, Storyboarded, TabBatItemProtocol {
+class UserViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lastSelectionLabel: UILabel!
     
     var viewModel: UserViewModel?
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()

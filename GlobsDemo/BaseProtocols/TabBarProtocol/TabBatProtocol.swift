@@ -21,6 +21,7 @@ enum ItemBarType {
 
     case user
     case soccer
+    case globes
 
     var tabBarItem: UITabBarItem {
         switch self {
@@ -33,6 +34,12 @@ enum ItemBarType {
             let tabBarItem = UITabBarItem(title: "User",
                                               image: UIImage(systemName: "person.fill"),
                                               selectedImage: UIImage(systemName: "person"))
+
+            return tabBarItem
+        case .globes:
+            let tabBarItem = UITabBarItem(title: "Gloges",
+                                              image: UIImage(systemName: "paperplane.fill"),
+                                              selectedImage: UIImage(systemName: "paperplane"))
 
             return tabBarItem
         }

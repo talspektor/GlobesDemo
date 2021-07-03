@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E157C1B3-3D5C-42AA-827C-A348895A306C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../Library/Developer/Xcode/DerivedData/GlobsDemo-gyrhvpfbxmnwikglpjoxzbmitakg/SourcePackages/checkouts/NetworkLayer/Sources/NetworkLayer/Network/Service/Router.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "request(_:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E157C1B3-3D5C-42AA-827C-A348895A306C - de4f161fe4ec3c16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NetworkLayer.Router.request(_: &#x3c4;_0_0, completion: (NetworkLayer.NetworkResponseItem) -&gt; ()) -&gt; ()"
-                  moduleName = "GlobsDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/taltalspektor/Library/Developer/Xcode/DerivedData/GlobsDemo-gyrhvpfbxmnwikglpjoxzbmitakg/SourcePackages/checkouts/NetworkLayer/Sources/NetworkLayer/Network/Service/Router.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "548">
-               </Location>
-               <Location
-                  uuid = "E157C1B3-3D5C-42AA-827C-A348895A306C - a6d846c5a32b8230"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NetworkLayer.Router.request(_: &#x3c4;_0_0, completion: (NetworkLayer.NetworkResponseItem) -&gt; ()) -&gt; ()"
-                  moduleName = "GlobsDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/taltalspektor/Library/Developer/Xcode/DerivedData/GlobsDemo-gyrhvpfbxmnwikglpjoxzbmitakg/SourcePackages/checkouts/NetworkLayer/Sources/NetworkLayer/Network/Service/Router.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "289">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "839440E5-4FF2-48D0-B72E-15E5A691FABB"
             shouldBeEnabled = "No"
             ignoreCount = "0"

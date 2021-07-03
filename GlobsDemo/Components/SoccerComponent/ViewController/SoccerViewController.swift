@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol {
+class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
 
     private enum SegmentPresentingState: Int {
         case spain = 0

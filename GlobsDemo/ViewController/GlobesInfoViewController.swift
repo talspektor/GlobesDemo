@@ -7,21 +7,21 @@
 
 import UIKit
 
-class GlobesInfoViewController: UIViewController {
+class GlobesInfoViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
     
     enum SegmentPresentingState: Int {
         case cars = 0
         case sportsAndCulture = 1
     }
 
-    static let identifier = String(describing: GlobesInfoViewController.self)
+    var coordinator: SoccerCoordinator?
+    var didSelectCell: ((String?) -> Void)?
+    var viewModel: GlobesInfoViewModel?
     
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndecatorView: UIActivityIndicatorView!
-    
-    var viewModel: GlobesInfoViewModel?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -32,25 +32,39 @@ class GlobesInfoViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel?.fetchAll()
         activityIndecatorView.startAnimating()
-        viewModel?.refreshData = {
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-            }
+        listenToViewModelUpdates()
+    }
+
+    private func listenToViewModelUpdates() {
+        viewModel?.refreshData = { [weak self] in
+            self?.refreshData()
         }
-        viewModel?.startAnimate = {
-            print("startAnimate")
-            DispatchQueue.main.async { [weak self] in
-                self?.activityIndecatorView.startAnimating()
-                self?.activityIndecatorView.isHidden = false
-            }
-            
+        viewModel?.startAnimate = { [weak self] in
+            self?.startAnimate()
+
         }
-        viewModel?.stopAnimate = {
-            print("stopAnimate")
-            DispatchQueue.main.async { [weak self] in
-                self?.activityIndecatorView.stopAnimating()
-                self?.activityIndecatorView.isHidden = true
-            }
+        viewModel?.stopAnimate = { [weak self] in
+            self?.stopAnimate()
+        }
+    }
+
+    private func refreshData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+
+    private func startAnimate() {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndecatorView.startAnimating()
+            self?.activityIndecatorView.isHidden = false
+        }
+    }
+
+    private func stopAnimate() {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndecatorView.stopAnimating()
+            self?.activityIndecatorView.isHidden = true
         }
     }
     
@@ -82,8 +96,20 @@ extension GlobesInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? GlobesCell else { return }
-        viewModel?.lastSelection = cell.titleLabel.text
+        handleLastSelection(index: indexPath.row)
+
+        showDetails(index: indexPath.row)
+    }
+
+    private func handleLastSelection(index: Int) {
+        viewModel?.lastSelection = viewModel?.dataModel[index].title
+        didSelectCell?(viewModel?.dataModel[index].title)
+    }
+
+    private func showDetails(index: Int) {
+        let name = viewModel?.dataModel[index].title
+        let league = viewModel?.dataModel[index].description
+        coordinator?.showDetails(name: name, league: league)
     }
 }
 

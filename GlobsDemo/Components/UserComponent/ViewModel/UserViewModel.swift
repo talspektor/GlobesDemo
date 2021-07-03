@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserViewModel {
+class UserViewModel: BaseViewModel {
     
     let userName: String = "Tal Spektor"
     var currentTime: String {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SoccerViewModel {
+class SoccerViewModel: BaseViewModel {
 
     var refreshData: (() -> Void)?
     var stopAnimate: (() -> Void)?
@@ -27,7 +27,7 @@ class SoccerViewModel {
     private let dataProvider: SoccerTeamsDataProvider
     private let timeInterval = TimeInterval(5.0)
 
-    @AtomicInteger private var counter: Int = 0
+    @Atomic private var counter: Int = 0
 
     init(dataProvider: SoccerTeamsDataProvider) {
         self.dataProvider = dataProvider
@@ -37,6 +37,7 @@ class SoccerViewModel {
 
     private func setCounter() {
         _counter.didSet = { [weak self] value in
+            print("!!! \(value)")
             value == 0 ? self?.stopAnimate?() : self?.startAnimate?()
         }
     }
@@ -61,6 +62,7 @@ class SoccerViewModel {
     }
 
     func fetchSpanishLeague(completion: (() -> Void)? = nil) {
+        print("!!! Spanish started")
         _counter.set(newValue: counter + 1)
         dataProvider.fetchSpanishLeague { [weak self] result in
             guard let self = self else { return }
@@ -79,9 +81,11 @@ class SoccerViewModel {
     }
 
     func fetchEnglishLeague() {
+        print("!!! English started")
         _counter.set(newValue: counter + 1)
         dataProvider.fetchEnglishLeague { [weak self] result in
             guard let self = self else { return }
+            print("!!! English ended")
             self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
                 self?.fetchEnglishLeague()
@@ -96,9 +100,11 @@ class SoccerViewModel {
     }
 
     func fetchFrenchLeague() {
+        print("!!! France started")
         _counter.set(newValue: counter + 1)
         dataProvider.fetchFrenchLeague { [weak self] result in
             guard let self = self else { return }
+            print("!!! France ended")
             self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
                 self?.fetchFrenchLeague()

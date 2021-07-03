@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController, Storyboarded {
+class TabBarController: UITabBarController, Storyboarded, BaseViewController {
 
     weak var coordinator: MainCoordinator?
 

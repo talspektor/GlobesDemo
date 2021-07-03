@@ -8,7 +8,7 @@
 import Foundation
 
 @propertyWrapper
-struct AtomicInteger<Value> {
+struct Atomic<Value> {
 
     var wrappedValue: Value {
         get { return get() }
@@ -37,19 +37,5 @@ struct AtomicInteger<Value> {
         lock.lock()
         defer { lock.unlock() }
         value = newValue
-    }
-
-    mutating public func increment() {
-        guard var value = value as? Int else { return }
-        lock.lock()
-        value = value + 1
-        lock.unlock()
-    }
-
-    mutating public func reduction() {
-        guard var value = value as? Int else { return }
-        lock.lock()
-        value = value - 1
-        lock.unlock()
     }
 }

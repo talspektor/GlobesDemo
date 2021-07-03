@@ -7,16 +7,12 @@
 
 import Foundation
 
-class GlobesInfoViewModel {
-    
-    enum State {
-        case fatching
-        case none
-    }
+class GlobesInfoViewModel: BaseViewModel {
     
     var refreshData: (() -> Void)?
     var stopAnimate: (() -> Void)?
     var startAnimate: (() -> Void)?
+
     var dataModel = [GlobsModel]() {
         didSet {
             refreshData?()
@@ -24,22 +20,26 @@ class GlobesInfoViewModel {
     }
     
     var lastSelection: String?
+
     private var carGlobsModels = [GlobsModel]()
     private var sportGlobsModels = [GlobsModel]()
     private var cultureGlobsModel = [GlobsModel]()
     
-    private let dataProvider: GlobesNetworkDataProvider
+    private let dataProvider: GlobesDataProvider
     private let timeInterval = TimeInterval(5.0)
-    private var isFatching: Bool {
-        isFetchingCars && isFetchingSport && isFetchingCulture
-    }
-    private var isFetchingCars = false
-    private var isFetchingSport = false
-    private var isFetchingCulture = false
+
+    @Atomic private var counter: Int = 0
         
-    init(dataProvider: GlobesNetworkDataProvider) {
+    init(dataProvider: GlobesDataProvider) {
         self.dataProvider = dataProvider
         self.dataModel = carGlobsModels
+        setCounter()
+    }
+
+    private func setCounter() {
+        _counter.didSet = { [weak self] value in
+            value == 0 ? self?.stopAnimate?() : self?.startAnimate?()
+        }
     }
     
     func switchToSportAndCulture() {
@@ -52,19 +52,20 @@ class GlobesInfoViewModel {
     }
     
     func fetchAll() {
-        fetchCars {
+        fetchCars { [weak self] in
+            guard let self = self else { return }
             self.dataModel = self.carGlobsModels
+            self.refreshData?()
         }
         fetchSport()
         fetchCulture()
     }
     
     func fetchCars(completion: (() -> Void)? = nil) {
-        isFetchingCars = true
-        if isFatching {
-            stopAnimate?()
-        }
-        dataProvider.fetchCars { result in
+        _counter.set(newValue: counter + 1)
+        dataProvider.fetchCars { [weak self] result in
+            guard let self = self else { return }
+            self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) {
                 self.fetchCars()
             }
@@ -75,20 +76,14 @@ class GlobesInfoViewModel {
             case .failure(let error):
                 print(error)
             }
-            
-            self.isFetchingCars = false
-            if !self.isFatching {
-                self.stopAnimate?()
-            }
         }
     }
     
     func fetchSport() {
-        isFetchingSport = true
-        if isFatching {
-            stopAnimate?()
-        }
-        dataProvider.fetchSport { result in
+        _counter.set(newValue: counter + 1)
+        dataProvider.fetchSport { [weak self] result in
+            guard let self = self else { return }
+            self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) {
                 self.fetchSport()
             }
@@ -98,19 +93,14 @@ class GlobesInfoViewModel {
             case .failure(let error):
                 print(error)
             }
-            self.isFetchingSport = false
-            if !self.isFatching {
-                self.stopAnimate?()
-            }
         }
     }
     
     func fetchCulture() {
-        isFetchingCulture = true
-        if isFatching {
-            stopAnimate?()
-        }
-        dataProvider.fetchCulture { result in
+        _counter.set(newValue: counter + 1)
+        dataProvider.fetchCulture { [weak self] result in
+            guard let self = self else { return }
+            self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) {
                 self.fetchCulture()
             }
@@ -120,14 +110,6 @@ class GlobesInfoViewModel {
             case .failure(let error):
                 print(error)
             }
-            self.isFetchingCulture = false
-            if !self.isFatching {
-                self.stopAnimate?()
-            }
         }
-    }
-    
-    deinit {
-        print(String(describing: GlobesInfoViewModel.self))
     }
 }
