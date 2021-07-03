@@ -377,13 +377,21 @@
 			path = GlobesComponent;
 			sourceTree = "<group>";
 		};
-		43A5528B2690A06500E02AC6 /* EndPoint */ = {
+		43A5528D2690A13C00E02AC6 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
 				F271886A2683288F007E9425 /* GlobesEndPoint.swift */,
 				43A55238268F126200E02AC6 /* TeamsEndPoint.swift */,
 			);
-			name = EndPoint;
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		43A5528E2690A14800E02AC6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				43A5528D2690A13C00E02AC6 /* EndPoint */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F271881126831AD9007E9425 = {
@@ -412,7 +420,7 @@
 				43A5527B26906F0E00E02AC6 /* Coordinator */,
 				43A55240268F16D900E02AC6 /* SuppertingFiles */,
 				F2718865268327CF007E9425 /* DataProvider */,
-				F271885E26832543007E9425 /* Network */,
+				43A5528E2690A14800E02AC6 /* Network */,
 				F271885B268324F8007E9425 /* Model */,
 				43A5528426908C5000E02AC6 /* BaseProtocols */,
 				43A552692690645200E02AC6 /* Components */,
@@ -457,14 +465,6 @@
 				43A55237268F11A300E02AC6 /* Team */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		F271885E26832543007E9425 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				43A5528B2690A06500E02AC6 /* EndPoint */,
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 		F2718865268327CF007E9425 /* DataProvider */ = {
