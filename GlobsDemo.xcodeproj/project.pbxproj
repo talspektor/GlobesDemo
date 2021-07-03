@@ -138,15 +138,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		43A55230268F105700E02AC6 /* EndPoint */ = {
-			isa = PBXGroup;
-			children = (
-				F271886A2683288F007E9425 /* GlobesEndPoint.swift */,
-				43A55238268F126200E02AC6 /* TeamsEndPoint.swift */,
-			);
-			name = EndPoint;
-			sourceTree = "<group>";
-		};
 		43A55237268F11A300E02AC6 /* Team */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +260,7 @@
 			children = (
 				F271885026831DD2007E9425 /* TabBarComponent */,
 				43A5528126907B4600E02AC6 /* UserComponent */,
-				F271885326831E53007E9425 /* GlobesInfoComponent */,
+				43A5528A2690A02100E02AC6 /* GlobesComponent */,
 				43A55243268F17FF00E02AC6 /* SoccerComponent */,
 				43A55257268F474000E02AC6 /* DetailComponent */,
 			);
@@ -376,6 +367,25 @@
 			path = BaseProtocols;
 			sourceTree = "<group>";
 		};
+		43A5528A2690A02100E02AC6 /* GlobesComponent */ = {
+			isa = PBXGroup;
+			children = (
+				43A552702690655B00E02AC6 /* GlobesViewModel */,
+				F271886C26833416007E9425 /* GlobesCell */,
+				43A5525A2690530900E02AC6 /* ViewController */,
+			);
+			path = GlobesComponent;
+			sourceTree = "<group>";
+		};
+		43A5528B2690A06500E02AC6 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				F271886A2683288F007E9425 /* GlobesEndPoint.swift */,
+				43A55238268F126200E02AC6 /* TeamsEndPoint.swift */,
+			);
+			name = EndPoint;
+			sourceTree = "<group>";
+		};
 		F271881126831AD9007E9425 = {
 			isa = PBXGroup;
 			children = (
@@ -440,17 +450,6 @@
 			path = TabBarComponent;
 			sourceTree = "<group>";
 		};
-		F271885326831E53007E9425 /* GlobesInfoComponent */ = {
-			isa = PBXGroup;
-			children = (
-				43A552702690655B00E02AC6 /* GlobesViewModel */,
-				F271886C26833416007E9425 /* GlobesCell */,
-				43A5525A2690530900E02AC6 /* ViewController */,
-			);
-			name = GlobesInfoComponent;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		F271885B268324F8007E9425 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,7 +462,7 @@
 		F271885E26832543007E9425 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				43A55230268F105700E02AC6 /* EndPoint */,
+				43A5528B2690A06500E02AC6 /* EndPoint */,
 			);
 			name = Network;
 			sourceTree = "<group>";
