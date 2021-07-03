@@ -31,9 +31,9 @@ class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol, 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        listenToViewModelUpdates()
         viewModel?.fetchAll()
         activityIndecatorView.startAnimating()
-        listenToViewModelUpdates()
     }
 
     private func listenToViewModelUpdates() {
