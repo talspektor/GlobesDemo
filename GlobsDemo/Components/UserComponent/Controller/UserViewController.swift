@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Coordinator
 
 class UserViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Coordinator
 
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()

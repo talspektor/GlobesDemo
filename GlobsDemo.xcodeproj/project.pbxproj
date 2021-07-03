@@ -25,11 +25,11 @@
 		43A5525E2690547E00E02AC6 /* TabBatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5525D2690547E00E02AC6 /* TabBatProtocol.swift */; };
 		43A5526526905FE100E02AC6 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A5526426905FE100E02AC6 /* TabBarController.storyboard */; };
 		43A55276269067E400E02AC6 /* SoccerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A55275269067E400E02AC6 /* SoccerCoordinator.swift */; };
-		43A5527826906B8900E02AC6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5527726906B8900E02AC6 /* Coordinator.swift */; };
 		43A5527D26906F1E00E02AC6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5527C26906F1E00E02AC6 /* MainCoordinator.swift */; };
 		43A5528326908C4C00E02AC6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5528226908C4C00E02AC6 /* BaseViewController.swift */; };
 		43A5528626908CC100E02AC6 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5528526908CC100E02AC6 /* BaseViewModel.swift */; };
 		43A552892690996F00E02AC6 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 43A552882690996F00E02AC6 /* NetworkLayer */; };
+		43A5529D2690A5DA00E02AC6 /* Coordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 43A5529C2690A5DA00E02AC6 /* Coordinator */; };
 		F271881E26831AD9007E9425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271881D26831AD9007E9425 /* AppDelegate.swift */; };
 		F271882026831AD9007E9425 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271881F26831AD9007E9425 /* SceneDelegate.swift */; };
 		F271882226831AD9007E9425 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F271882126831AD9007E9425 /* UserViewController.swift */; };
@@ -84,7 +84,6 @@
 		43A5525D2690547E00E02AC6 /* TabBatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBatProtocol.swift; sourceTree = "<group>"; };
 		43A5526426905FE100E02AC6 /* TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
 		43A55275269067E400E02AC6 /* SoccerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerCoordinator.swift; sourceTree = "<group>"; };
-		43A5527726906B8900E02AC6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43A5527C26906F1E00E02AC6 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		43A5528226908C4C00E02AC6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		43A5528526908CC100E02AC6 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -118,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43A552892690996F00E02AC6 /* NetworkLayer in Frameworks */,
+				43A5529D2690A5DA00E02AC6 /* Coordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,14 +316,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		43A5527B26906F0E00E02AC6 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				43A5527726906B8900E02AC6 /* Coordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		43A5527E2690773800E02AC6 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,7 +409,6 @@
 		F271881C26831AD9007E9425 /* GlobsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				43A5527B26906F0E00E02AC6 /* Coordinator */,
 				43A55240268F16D900E02AC6 /* SuppertingFiles */,
 				F2718865268327CF007E9425 /* DataProvider */,
 				43A5528E2690A14800E02AC6 /* Network */,
@@ -502,6 +493,7 @@
 			name = GlobsDemo;
 			packageProductDependencies = (
 				43A552882690996F00E02AC6 /* NetworkLayer */,
+				43A5529C2690A5DA00E02AC6 /* Coordinator */,
 			);
 			productName = GlobsDemo;
 			productReference = F271881A26831AD9007E9425 /* GlobsDemo.app */;
@@ -576,6 +568,7 @@
 			mainGroup = F271881126831AD9007E9425;
 			packageReferences = (
 				43A552872690996F00E02AC6 /* XCRemoteSwiftPackageReference "NetworkLayer" */,
+				43A5529B2690A5DA00E02AC6 /* XCRemoteSwiftPackageReference "Coordinator" */,
 			);
 			productRefGroup = F271881B26831AD9007E9425 /* Products */;
 			projectDirPath = "";
@@ -649,7 +642,6 @@
 				F271886E2683342D007E9425 /* GlobesCell.swift in Sources */,
 				F271885226831DF6007E9425 /* TabBarController.swift in Sources */,
 				F271885526831E83007E9425 /* GlobesInfoViewController.swift in Sources */,
-				43A5527826906B8900E02AC6 /* Coordinator.swift in Sources */,
 				43A5527D26906F1E00E02AC6 /* MainCoordinator.swift in Sources */,
 				F271882026831AD9007E9425 /* SceneDelegate.swift in Sources */,
 				43A55247268F190400E02AC6 /* TeamCell.swift in Sources */,
@@ -981,6 +973,14 @@
 				kind = branch;
 			};
 		};
+		43A5529B2690A5DA00E02AC6 /* XCRemoteSwiftPackageReference "Coordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/talspektor/Coordinator.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -988,6 +988,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 43A552872690996F00E02AC6 /* XCRemoteSwiftPackageReference "NetworkLayer" */;
 			productName = NetworkLayer;
+		};
+		43A5529C2690A5DA00E02AC6 /* Coordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43A5529B2690A5DA00E02AC6 /* XCRemoteSwiftPackageReference "Coordinator" */;
+			productName = Coordinator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

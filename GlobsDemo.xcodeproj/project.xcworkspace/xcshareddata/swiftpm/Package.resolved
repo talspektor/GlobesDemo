@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Coordinator",
+        "repositoryURL": "https://github.com/talspektor/Coordinator.git",
+        "state": {
+          "branch": "main",
+          "revision": "de41ddcc09d8e0e04c24368a1485b5a5a101ea20",
+          "version": null
+        }
+      },
+      {
         "package": "NetworkLayer",
         "repositoryURL": "https://github.com/talspektor/NetworkLayer.git",
         "state": {

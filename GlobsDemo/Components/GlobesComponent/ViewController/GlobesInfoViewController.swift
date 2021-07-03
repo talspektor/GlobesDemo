@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Coordinator
 
 class GlobesInfoViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
     
