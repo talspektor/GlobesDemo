@@ -7,12 +7,14 @@
 
 import UIKit
 
-class GlobsInfoViewController: UIViewController {
+class GlobesInfoViewController: UIViewController, ViewContorllerType {
     
     enum SegmentPresentingState: Int {
         case cars = 0
         case sportsAndCulture = 1
     }
+
+    static let identifier = String(describing: GlobesInfoViewController.self)
     
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -63,7 +65,7 @@ class GlobsInfoViewController: UIViewController {
     }
 }
 
-extension GlobsInfoViewController: UITableViewDelegate, UITableViewDataSource {
+extension GlobesInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.dataModel.count ?? 0

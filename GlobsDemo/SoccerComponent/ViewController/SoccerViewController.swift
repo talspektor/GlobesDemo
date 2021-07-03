@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SoccerViewController: UIViewController {
+class SoccerViewController: UIViewController, ViewContorllerType {
 
     enum SegmentPresentingState: Int {
         case spain = 0

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+class UserViewController: UIViewController, ViewContorllerType {
 
     static let identifier = String(describing: UserViewController.self)
     

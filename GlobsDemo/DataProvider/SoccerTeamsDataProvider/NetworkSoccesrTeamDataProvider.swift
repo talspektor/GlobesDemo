@@ -8,7 +8,7 @@
 import Foundation
 import NetworkLayer
 
-struct NeatworkSoccesrTeamDataProvider: SoccerTeamsDataProvider {
+struct NetworkSoccesrTeamDataProvider: SoccerTeamsDataProvider {
 
     let router = Router<TeamsEndPoint>()
 
