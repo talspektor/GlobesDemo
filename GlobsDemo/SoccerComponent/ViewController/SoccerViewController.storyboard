@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Soccer View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SoccerViewController" id="Y6W-OH-hqX" customClass="SoccerViewController" customModule="GlobsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vpt-zB-KOc">
+                                <rect key="frame" x="0.0" y="202" width="414" height="694"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gE9-Ec-XUB">
+                                <rect key="frame" x="276" y="276" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="dUr-nR-aV2"/>
+                                    <constraint firstAttribute="height" constant="48" id="hh5-oO-RTQ"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vc7-Ls-gnc">
+                                <rect key="frame" x="172.5" y="48" width="255" height="32"/>
+                                <segments>
+                                    <segment title="Spain"/>
+                                    <segment title="England &amp; France"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didSwitchSegment:" destination="Y6W-OH-hqX" eventType="valueChanged" id="6dB-xc-7k5"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gE9-Ec-XUB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="b9D-La-tzt"/>
+                            <constraint firstItem="vc7-Ls-gnc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pfF-8s-LTb"/>
+                            <constraint firstItem="vc7-Ls-gnc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="q58-ck-KAW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vc7-Ls-gnc" secondAttribute="trailing" constant="40" id="tEq-Ao-NNb"/>
+                            <constraint firstItem="vc7-Ls-gnc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="48" id="wde-Xl-wjX"/>
+                            <constraint firstItem="gE9-Ec-XUB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="wgm-Mu-6wT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndecatorView" destination="gE9-Ec-XUB" id="Far-JN-e57"/>
+                        <outlet property="segment" destination="vc7-Ls-gnc" id="Hz1-Yl-6Bd"/>
+                        <outlet property="tableView" destination="vpt-zB-KOc" id="OK3-KU-WSK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="51.5625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
