@@ -37,7 +37,6 @@ class SoccerViewModel: BaseViewModel {
 
     private func setCounter() {
         _counter.didSet = { [weak self] value in
-            print("!!! \(value)")
             value == 0 ? self?.stopAnimate?() : self?.startAnimate?()
         }
     }
@@ -62,11 +61,9 @@ class SoccerViewModel: BaseViewModel {
     }
 
     func fetchSpanishLeague(completion: (() -> Void)? = nil) {
-        print("!!! Spanish started")
         _counter.set(newValue: counter + 1)
         dataProvider.fetchSpanishLeague { [weak self] result in
             guard let self = self else { return }
-            print("!!! Spanish ended")
             self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
                 self?.fetchSpanishLeague()
@@ -82,11 +79,9 @@ class SoccerViewModel: BaseViewModel {
     }
 
     func fetchEnglishLeague() {
-        print("!!! English started")
         _counter.set(newValue: counter + 1)
         dataProvider.fetchEnglishLeague { [weak self] result in
             guard let self = self else { return }
-            print("!!! English ended")
             self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
                 self?.fetchEnglishLeague()
@@ -101,11 +96,9 @@ class SoccerViewModel: BaseViewModel {
     }
 
     func fetchFrenchLeague() {
-        print("!!! France started")
         _counter.set(newValue: counter + 1)
         dataProvider.fetchFrenchLeague { [weak self] result in
             guard let self = self else { return }
-            print("!!! France ended")
             self._counter.set(newValue: self.counter - 1)
             DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
                 self?.fetchFrenchLeague()
