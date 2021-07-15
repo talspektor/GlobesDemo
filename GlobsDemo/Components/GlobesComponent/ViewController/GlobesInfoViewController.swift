@@ -7,6 +7,7 @@
 
 import UIKit
 import Coordinator
+import Combine
 
 class GlobesInfoViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
     
@@ -22,6 +23,8 @@ class GlobesInfoViewController: UIViewController, Storyboarded, TabBatItemProtoc
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndecatorView: UIActivityIndicatorView!
+    
+    private var cancellables = Set<AnyCancellable>()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +40,10 @@ class GlobesInfoViewController: UIViewController, Storyboarded, TabBatItemProtoc
     }
 
     private func listenToViewModelUpdates() {
-        viewModel?.refreshData = { [weak self] in
+        viewModel?.refreshData.sink { [weak self] in
             self?.refreshData()
-        }
+        }.store(in: &cancellables)
+        
         viewModel?.startAnimate = { [weak self] in
             self?.startAnimate()
 

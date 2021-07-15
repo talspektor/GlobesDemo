@@ -11,10 +11,7 @@ import Combine
 
 class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
 
-    private enum SegmentPresentingState: Int {
-        case spain = 0
-        case englandAndFrance = 1
-    }
+    
     var coordinator: SoccerCoordinator?
     var didSelectCell: ((String?) -> Void)?
     var viewModel: SoccerViewModel?
@@ -22,6 +19,12 @@ class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol, 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var activityIndecatorView: UIActivityIndicatorView!
+    
+    private enum SegmentPresentingState: Int {
+        case spain = 0
+        case englandAndFrance = 1
+    }
+    private var cancellables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +41,13 @@ class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol, 
     }
 
     private func listenToViewModelUpdates() {
-        viewModel?.refreshData = { [weak self] in
-            self?.refreshData()
-        }
+        viewModel?.refreshData
+            .sink { [weak self] _ in
+                self?.refreshData()
+            }.store(in: &cancellables)
+//        viewModel?.refreshData = { [weak self] in
+//            self?.refreshData()
+//        }
         viewModel?.startAnimate = { [weak self] in
             self?.startAnimate()
 

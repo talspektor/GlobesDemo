@@ -9,15 +9,16 @@ import Foundation
 import Combine
 
 class SoccerViewModel: BaseViewModel, ViewModelProtocol {
+    
     typealias Provider = SoccerTeamsDataProvider
     
-    var refreshData: (() -> Void)?
+    var refreshData = PassthroughSubject<Void, Never>()
     var stopAnimate: (() -> Void)?
     var startAnimate: (() -> Void)?
 
     var dataModel = [Team]() {
         didSet {
-            refreshData?()
+            refreshData.send()
         }
     }
     var lastSelection: String?
@@ -59,7 +60,7 @@ class SoccerViewModel: BaseViewModel, ViewModelProtocol {
         fetchSpanishLeague { [weak self] in
             guard let self = self else { return }
             self.dataModel = self.spanishTeams
-            self.refreshData?()
+            self.refreshData.send()
         }
         fetchFrenchLeague()
         fetchEnglishLeague()

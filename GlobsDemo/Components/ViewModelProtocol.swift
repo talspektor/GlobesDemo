@@ -10,7 +10,7 @@ import Combine
 
 protocol ViewModelProtocol: LoaderHandlable, DataFetcherable {
     associatedtype Provider
-    var refreshData: (() -> Void)? { get }
+    var refreshData: PassthroughSubject<Void, Never> { get }
     var lastSelection: String? { get set }
     var dataProvider: Provider { get }
     init(dataProvider: Provider)

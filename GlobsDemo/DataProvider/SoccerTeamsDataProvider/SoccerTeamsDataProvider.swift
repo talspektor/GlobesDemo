@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
-protocol SoccerTeamsDataProvider {
-    func fetchSpanishLeague(completion: @escaping (Result<TeamsResult, Error>) -> Void)
-    func fetchEnglishLeague(completion: @escaping (Result<TeamsResult, Error>) -> Void)
-    func fetchFrenchLeague(completion: @escaping (Result<TeamsResult, Error>) -> Void)
+protocol SoccerTeamsDataProvider: DataProvider {
+    func fetchSpanishLeague() -> AnyPublisher<TeamsResult, Error>
+    func fetchEnglishLeague() -> AnyPublisher<TeamsResult, Error>
+    func fetchFrenchLeague() -> AnyPublisher<TeamsResult, Error>
 }

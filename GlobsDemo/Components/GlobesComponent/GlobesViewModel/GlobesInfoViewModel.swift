@@ -9,16 +9,16 @@ import Foundation
 import Combine
 
 class GlobesInfoViewModel: BaseViewModel, ViewModelProtocol {
+    
     typealias Provider = GlobesDataProvider
     
-    
-    var refreshData: (() -> Void)?
+    var refreshData = PassthroughSubject<Void, Never>()
     var stopAnimate: (() -> Void)?
     var startAnimate: (() -> Void)?
 
     var dataModel = [GlobesModel]() {
         didSet {
-            refreshData?()
+            refreshData.send()
         }
     }
     
@@ -61,7 +61,7 @@ class GlobesInfoViewModel: BaseViewModel, ViewModelProtocol {
         fetchCars { [weak self] in
             guard let self = self else { return }
             self.dataModel = self.carGlobsModels
-            self.refreshData?()
+            self.refreshData.send()
         }
         fetchSport()
         fetchCulture()
