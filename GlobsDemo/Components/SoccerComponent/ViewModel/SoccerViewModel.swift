@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Combine
 
-class SoccerViewModel: BaseViewModel {
-
+class SoccerViewModel: BaseViewModel, ViewModelProtocol {
+    typealias Provider = SoccerTeamsDataProvider
+    
     var refreshData: (() -> Void)?
     var stopAnimate: (() -> Void)?
     var startAnimate: (() -> Void)?
@@ -24,12 +26,15 @@ class SoccerViewModel: BaseViewModel {
     private var englishTeams = [Team]()
     private var frenceTeams = [Team]()
 
-    private let dataProvider: SoccerTeamsDataProvider
-    private let timeInterval = TimeInterval(5.0)
+    private(set) var dataProvider: SoccerTeamsDataProvider
+    var timeInterval: TimeInterval {
+        TimeInterval(5.0)
+    }
+    private(set) var cancellables = Set<AnyCancellable>()
 
-    @Atomic private var counter: Int = 0
+    @Atomic private(set) var counter: Int = 0
 
-    init(dataProvider: SoccerTeamsDataProvider) {
+    required init(dataProvider: SoccerTeamsDataProvider) {
         self.dataProvider = dataProvider
         self.dataModel = spanishTeams
         setCounter()
@@ -62,53 +67,67 @@ class SoccerViewModel: BaseViewModel {
 
     func fetchSpanishLeague(completion: (() -> Void)? = nil) {
         _counter.set(newValue: counter + 1)
-        dataProvider.fetchSpanishLeague { [weak self] result in
-            guard let self = self else { return }
-            self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
-                self?.fetchSpanishLeague()
-            }
-            switch result {
-            case .success(let teamsResult):
-                self.spanishTeams = teamsResult.teams
+        dataProvider.fetchSpanishLeague()
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                self._counter.set(newValue: self.counter - 1)
+                DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                    self?.fetchSpanishLeague()
+                }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] (teamsResult) in
+                self?.spanishTeams = teamsResult.teams
                 completion?()
-            case .failure(let error):
-                print(error)
-            }
-        }
+            }.store(in: &cancellables)
     }
 
     func fetchEnglishLeague() {
         _counter.set(newValue: counter + 1)
-        dataProvider.fetchEnglishLeague { [weak self] result in
-            guard let self = self else { return }
-            self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
-                self?.fetchEnglishLeague()
-            }
-            switch result {
-            case .success(let teamsResult):
-                self.englishTeams = teamsResult.teams
-            case .failure(let error):
-                print(error)
-            }
-        }
+        dataProvider.fetchEnglishLeague()
+            .sink { [weak self] completion in
+                self?.decraceCount()
+                guard let self = self else { return }
+                self._counter.set(newValue: self.counter - 1)
+                DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                    self?.fetchEnglishLeague()
+                }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] (teamsResult) in
+                self?.englishTeams = teamsResult.teams
+            }.store(in: &cancellables)
     }
 
     func fetchFrenchLeague() {
         _counter.set(newValue: counter + 1)
-        dataProvider.fetchFrenchLeague { [weak self] result in
-            guard let self = self else { return }
-            self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
-                self?.fetchFrenchLeague()
-            }
-            switch result {
-            case .success(let teamsResult):
-                self.frenceTeams = teamsResult.teams
-            case .failure(let error):
-                print(error)
-            }
-        }
+        dataProvider.fetchFrenchLeague()
+            .sink { [weak self] completion in
+                self?.decraceCount()
+                guard let self = self else { return }
+                DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                    self?.fetchFrenchLeague()
+                }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] (teamsResult) in
+                self?.frenceTeams = teamsResult.teams
+            }.store(in: &cancellables)
+    }
+    
+    private func decraceCount() {
+        _counter.set(newValue: counter - 1)
     }
 }

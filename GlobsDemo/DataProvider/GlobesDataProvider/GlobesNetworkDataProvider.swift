@@ -7,32 +7,21 @@
 
 import Foundation
 import NetworkLayer
+import Combine
 
 struct GlobesNetworkDataProvider: GlobesDataProvider {
     
     let router = Router<GlobesEndPoint>()
     
-    func fetchCars(completion: @escaping (Result<[GlobsModel], Error>) -> Void) {
-        router.request(.cars) { networkResponseItem in
-            ResponseHandler.handleWithDecoding([GlobsModel].self, networkResponseItem) { result in
-                completion(result)
-            }
-        }
+    func fetchCars() -> AnyPublisher<[GlobesModel], Error> {
+        router.request(.cars, type: [GlobesModel].self)
     }
     
-    func fetchSport(completion: @escaping (Result<[GlobsModel], Error>) -> Void) {
-        router.request(.sport) { networkResponseItem in
-            ResponseHandler.handleWithDecoding([GlobsModel].self, networkResponseItem) { result in
-                completion(result)
-            }
-        }
+    func fetchSport() -> AnyPublisher<[GlobesModel], Error> {
+        router.request(.sport, type: [GlobesModel].self)
     }
     
-    func fetchCulture(completion: @escaping (Result<[GlobsModel], Error>) -> Void) {
-        router.request(.culture) { networkResponseItem in
-            ResponseHandler.handleWithDecoding([GlobsModel].self, networkResponseItem) { result in
-                completion(result)
-            }
-        }
+    func fetchCulture() -> AnyPublisher<[GlobesModel], Error> {
+        router.request(.culture, type: [GlobesModel].self)
     }
 }

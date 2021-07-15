@@ -14,8 +14,8 @@
         "package": "NetworkLayer",
         "repositoryURL": "https://github.com/talspektor/NetworkLayer.git",
         "state": {
-          "branch": "main",
-          "revision": "b0018d275ba27d16f5dc5098a3c13d04d2022d58",
+          "branch": "with-combine",
+          "revision": "801a490f4e5f3cee9a87db260063333dd2a57d88",
           "version": null
         }
       }

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
-protocol GlobesDataProvider {
-    func fetchCars(completion: @escaping (Result<[GlobsModel], Error>) -> Void)
-    func fetchSport(completion: @escaping (Result<[GlobsModel], Error>) -> Void)
-    func fetchCulture(completion: @escaping (Result<[GlobsModel], Error>) -> Void)
+protocol GlobesDataProvider: DataProvider {
+    func fetchCars() -> AnyPublisher<[GlobesModel], Error>
+    func fetchSport() -> AnyPublisher<[GlobesModel], Error>
+    func fetchCulture() -> AnyPublisher<[GlobesModel], Error>
 }

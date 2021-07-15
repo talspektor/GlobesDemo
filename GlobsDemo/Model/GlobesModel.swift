@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GlobsModel: Decodable {
+struct GlobesModel: Decodable {
     let title: String
     let description: String
 }

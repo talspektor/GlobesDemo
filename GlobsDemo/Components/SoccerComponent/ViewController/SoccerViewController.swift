@@ -7,6 +7,7 @@
 
 import UIKit
 import Coordinator
+import Combine
 
 class SoccerViewController: UIViewController, Storyboarded, TabBatItemProtocol, BaseViewController {
 

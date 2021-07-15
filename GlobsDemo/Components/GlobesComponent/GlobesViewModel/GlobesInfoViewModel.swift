@@ -6,31 +6,37 @@
 //
 
 import Foundation
+import Combine
 
-class GlobesInfoViewModel: BaseViewModel {
+class GlobesInfoViewModel: BaseViewModel, ViewModelProtocol {
+    typealias Provider = GlobesDataProvider
+    
     
     var refreshData: (() -> Void)?
     var stopAnimate: (() -> Void)?
     var startAnimate: (() -> Void)?
 
-    var dataModel = [GlobsModel]() {
+    var dataModel = [GlobesModel]() {
         didSet {
             refreshData?()
         }
     }
     
     var lastSelection: String?
+    var timeInterval: TimeInterval {
+        TimeInterval(5.0)
+    }
+    private(set) var cancellables = Set<AnyCancellable>()
 
-    private var carGlobsModels = [GlobsModel]()
-    private var sportGlobsModels = [GlobsModel]()
-    private var cultureGlobsModel = [GlobsModel]()
+    @Atomic private(set) var counter: Int = 0
+
+    private var carGlobsModels = [GlobesModel]()
+    private var sportGlobsModels = [GlobesModel]()
+    private var cultureGlobsModel = [GlobesModel]()
     
-    private let dataProvider: GlobesDataProvider
-    private let timeInterval = TimeInterval(5.0)
-
-    @Atomic private var counter: Int = 0
+    private(set) var dataProvider: GlobesDataProvider
         
-    init(dataProvider: GlobesDataProvider) {
+    required init(dataProvider: GlobesDataProvider) {
         self.dataProvider = dataProvider
         self.dataModel = carGlobsModels
         setCounter()
@@ -63,53 +69,65 @@ class GlobesInfoViewModel: BaseViewModel {
     
     func fetchCars(completion: (() -> Void)? = nil) {
         _counter.set(newValue: counter + 1)
-        dataProvider.fetchCars { [weak self] result in
-            guard let self = self else { return }
-            self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
-                self?.fetchCars()
-            }
-            switch result {
-            case .success(let carGlobsModels):
-                self.carGlobsModels = carGlobsModels
+        
+        dataProvider.fetchCars()
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                self._counter.set(newValue: self.counter - 1)
+                DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                    self?.fetchCars()
+                }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] model in
+                self?.carGlobsModels = model
                 completion?()
-            case .failure(let error):
-                print(error)
-            }
-        }
+            }.store(in: &cancellables)
     }
     
     func fetchSport() {
         _counter.set(newValue: counter + 1)
-        dataProvider.fetchSport { [weak self] result in
-            guard let self = self else { return }
-            self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
-                self?.fetchSport()
-            }
-            switch result {
-            case .success(let sportGlobsModels):
-                self.sportGlobsModels = sportGlobsModels
-            case .failure(let error):
-                print(error)
-            }
-        }
+        
+        dataProvider.fetchCars()
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                self._counter.set(newValue: self.counter - 1)
+                DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                    self?.fetchSport()
+                }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] model in
+                self?.sportGlobsModels = model
+            }.store(in: &cancellables)
     }
     
     func fetchCulture() {
         _counter.set(newValue: counter + 1)
-        dataProvider.fetchCulture { [weak self] result in
-            guard let self = self else { return }
-            self._counter.set(newValue: self.counter - 1)
-            DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
-                self?.fetchCulture()
-            }
-            switch result {
-            case .success(let cultureGlobsModel):
-                self.cultureGlobsModel = cultureGlobsModel
-            case .failure(let error):
-                print(error)
-            }
-        }
+        
+        dataProvider.fetchCars()
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                self._counter.set(newValue: self.counter - 1)
+                DispatchQueue.global().asyncAfter(deadline: .now() + self.timeInterval) { [weak self] in
+                    self?.fetchCulture()
+                }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] model in
+                self?.cultureGlobsModel = model
+            }.store(in: &cancellables)
     }
 }

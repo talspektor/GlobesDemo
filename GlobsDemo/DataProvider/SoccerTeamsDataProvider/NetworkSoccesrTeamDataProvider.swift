@@ -7,32 +7,21 @@
 
 import Foundation
 import NetworkLayer
+import Combine
 
 struct NetworkSoccesrTeamDataProvider: SoccerTeamsDataProvider {
 
-    let router = Router<TeamsEndPoint>()
+    private let router = Router<TeamsEndPoint>()
 
-    func fetchSpanishLeague(completion: @escaping (Result<TeamsResult, Error>) -> Void) {
-        router.request(.spain) { networkResponseItem in
-            ResponseHandler.handleWithDecoding(TeamsResult.self, networkResponseItem) { result in
-                completion(result)
-            }
-        }
+    func fetchSpanishLeague() -> AnyPublisher<TeamsResult, Error> {
+        router.request(.spain, type: TeamsResult.self)
     }
 
-    func fetchEnglishLeague(completion: @escaping (Result<TeamsResult, Error>) -> Void) {
-        router.request(.england) { networkResponseItem in
-            ResponseHandler.handleWithDecoding(TeamsResult.self, networkResponseItem) { result in
-                completion(result)
-            }
-        }
+    func fetchEnglishLeague() -> AnyPublisher<TeamsResult, Error> {
+        router.request(.england, type: TeamsResult.self)
     }
 
-    func fetchFrenchLeague(completion: @escaping (Result<TeamsResult, Error>) -> Void) {
-        router.request(.france) { networkResponseItem in
-            ResponseHandler.handleWithDecoding(TeamsResult.self, networkResponseItem) { result in
-                completion(result)
-            }
-        }
+    func fetchFrenchLeague() -> AnyPublisher<TeamsResult, Error> {
+        router.request(.france, type: TeamsResult.self)
     }
 }
